@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
         console.log("[SUCCESS] Adding new Pin to DB.");
     } catch (err) {
         res.status(500).json(err);
-        console.log("[FAILED] Adding new Pin to DV.");
+        console.log("[FAILED] Adding new Pin to DB.");
     }
 });
 
