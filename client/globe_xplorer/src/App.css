@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+.card {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.place {
+    font-size: 1.4rem;
+}
+
+label {
+    color: navy;
+    font-size: 1.3rem;
+    border-bottom: 0.15rem solid darkblue;
+    margin: 0.3rem 0;
+}
+
+.desc {
+    font-size: 1.3rem;
+}
+
+.star {
+    color: gold;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+}
