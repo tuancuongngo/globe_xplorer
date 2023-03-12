@@ -6,8 +6,8 @@
 }
 
 .card {
-    width: 250px;
-    height: 250px;
+    width: 25rem;
+    height: 25rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -41,4 +41,39 @@ label {
     display: flex;
     justify-content: space-between;
     color: gray;
+}
+
+form {
+    width: 25rem;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+input,
+textarea {
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-size: 1.2rem;
+    color: black;
+}
+
+.submitButton {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    background-color: rgb(253, 123, 100);
+}
+
+.submitButton:hover {
+    transition: 0.5s;
+    background-color: tomato;
+    cursor: pointer;
 }
