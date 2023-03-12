@@ -6,9 +6,28 @@ import axios from "axios";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarIcon from '@mui/icons-material/Star';
 import {format} from "timeago.js"
+
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { Register } from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 
+const pinAddSuccess = () => {
+  toast.success("Added new Pin.");
+}
+
+const pinAddFailure = () => {
+  toast.error("Pin not added. Please fill out all required fields.");
+}
+
+const userNotLoggedIn = () => {
+  toast.warning("You must be logged in to add Pins.");
+}
+
+const userLoggedOut = (userS) => {
+  toast.success("Logging out. Safe travels " + userS);
+}
 
 function App() {
 
@@ -52,12 +71,16 @@ function App() {
     
     try {
       if (!currentUser) {
-        console.log("ERROR. You are not logged in");
+        userNotLoggedIn();
       }
       else {
         const response = await axios.post("/pins", newPin);
         console.log(response.data);
         setPins([...pins, response.data]);
+
+        // Send success notification
+        pinAddSuccess();
+
         setNewPlace(null);
         setRating(1);
         setDesc(null);
@@ -65,11 +88,13 @@ function App() {
       }
     } catch(err) {
       // Send error notification
+      pinAddFailure();
       console.log(err);
     }
   }
 
   const handleLogout = () => {
+    userLoggedOut(currentUser);
     setCurrentUser(null);
   };
 
@@ -114,6 +139,12 @@ function App() {
             mapStyle = "mapbox://styles/ngoct/clf4kfkc4004w01p7nl01fbw3"
             onDblClick = {handleAddClick}
             >
+              <ToastContainer
+              position="top-left"
+              theme="colored"
+              hideProgressBar="true"
+              />
+
               <NavigationControl/>
 
               {
