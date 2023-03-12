@@ -6,6 +6,9 @@ import axios from "axios";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarIcon from '@mui/icons-material/Star';
 import {format} from "timeago.js"
+import { Register } from "./Components/Register/Register";
+import Login from "./Components/Login/Login";
+
 
 function App() {
 
@@ -39,9 +42,15 @@ function App() {
 
   }
 
+  // Add new Pin
   const[title, setTitle] = React.useState(null);
   const[desc, setDesc] = React.useState(null);
   const[rating, setRating] = React.useState(1);
+
+  // Login / Logout / Registering
+  const[currentUser, setCurrentUser] = React.useState(null);
+  const[showRegister, setShowRegister] = React.useState(false);
+  const[showLogin, setShowLogin] = React.useState(false);
 
 
 
@@ -168,6 +177,31 @@ function App() {
               }
 
             </Map>
+
+            <div className="footer">
+
+              <div className="footer_down">
+                {
+                  currentUser ? (<button className="button logout">Log Out</button>)
+                  :
+                  (
+                    <div>
+                      <button className="button login"
+                      onClick={() => {setShowLogin(true)}}
+                      >Login</button>
+                      
+                      <button className="button register"
+                      onClick={() => {setShowRegister(true)}}
+                      >Register</button>
+                    </div>
+                  )
+                }
+              </div>
+
+            </div>
+
+            {showRegister && <Register setShowRegister={setShowRegister} />}
+            {showLogin && <Login setShowLogin={setShowLogin} setCurrentUser={setCurrentUser} />}
         </div>
     );
 }

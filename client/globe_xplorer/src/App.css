@@ -77,3 +77,52 @@ textarea::placeholder {
     background-color: tomato;
     cursor: pointer;
 }
+
+.footer {
+    position: absolute;
+    display: flex;
+    padding: 1rem;
+    flex-direction: row;
+    height: auto;
+    width: 100vw;
+    background-color: rgb(16, 29, 49);
+    z-index: 100;
+    bottom: 0;
+    justify-content: center;
+}
+
+.footer:hover {
+    cursor: pointer;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.1) -6px -2px 16px 0px;
+}
+
+.button {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    margin-right: 1.5rem;
+}
+
+.logout {
+    background-color: tomato;
+}
+
+.login {
+    background-color: crimson;
+}
+
+.login:hover {
+    transition: 0.5s;
+    background-color: darkred;
+}
+
+.register {
+    background-color: blue;
+}
+
+.register:hover {
+    transition: 0.5s;
+    background-color: darkblue;
+}
