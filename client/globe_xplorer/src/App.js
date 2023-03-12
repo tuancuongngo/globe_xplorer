@@ -187,11 +187,11 @@ function App() {
                   (
                     <div>
                       <button className="button login"
-                      onClick={() => {setShowLogin(true)}}
+                      onClick={() => {setShowLogin(true); setShowRegister(false)}}
                       >Login</button>
                       
                       <button className="button register"
-                      onClick={() => {setShowRegister(true)}}
+                      onClick={() => {setShowRegister(true); setShowLogin(false)}}
                       >Register</button>
                     </div>
                   )

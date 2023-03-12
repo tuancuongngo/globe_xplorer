@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
             } else {
                 console.log("[SUCCESS] Finding User information in DB.");
                 // res.status(200).json(user);
-                res.status(200).json("Found user");
+                res.status(200).json(user.username);
             }
         }
     } catch (err) {

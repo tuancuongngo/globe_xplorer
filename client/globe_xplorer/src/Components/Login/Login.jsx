@@ -21,7 +21,8 @@ const Login = ({ setShowLogin, setCurrentUser }) => {
             // Successful login. Display Success notification
             console.log(response);
             setShowLogin(false);
-            setCurrentUser(response.data.username);
+            console.log(response.data);
+            setCurrentUser(response.data);
         } catch (err) {
             console.log(err);
         }
@@ -30,7 +31,7 @@ const Login = ({ setShowLogin, setCurrentUser }) => {
     return (
         <div className="login_container">
             <div className="welcome_banner">
-                Welcome! Please Login
+                Welcome! Please Login&nbsp;
                 <ExitToAppIcon />
             </div>
             <form onSubmit={handleSubmit}>
