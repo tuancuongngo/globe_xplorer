@@ -33,14 +33,45 @@ function App() {
   const [currentPlaceId, setCurrentPlaceId] = React.useState(null);
 
   const handleMarkerClicked = (id, lat, long) => {
-    console.log(lat);
-    console.log(long);
+    // console.log(lat);
+    // console.log(long);
     setCurrentPlaceId(id);
   }
 
-  const handlePinSubmit = () => {
-
+  const handlePinSubmit = async (e) => {
+    e.preventDefault();
+    
+    const newPin = {
+      username : currentUser,
+      title : title,
+      rating : rating,
+      desc : desc,
+      lat : newPlace.lat,
+      long : newPlace.long,
+    }
+    
+    try {
+      if (!currentUser) {
+        console.log("ERROR. You are not logged in");
+      }
+      else {
+        const response = await axios.post("/pins", newPin);
+        console.log(response.data);
+        setPins([...pins, response.data]);
+        setNewPlace(null);
+        setRating(1);
+        setDesc(null);
+        setTitle(null);
+      }
+    } catch(err) {
+      // Send error notification
+      console.log(err);
+    }
   }
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+  };
 
   // Add new Pin
   const[title, setTitle] = React.useState(null);
@@ -95,7 +126,7 @@ function App() {
                       <LocationOnIcon
                       className='icon'
                       onClick = {() => handleMarkerClicked(p._id, p.lat, p.long)}
-                      style = {{fontSize : viewPort.zoom * 2, color : "slateblue"}}
+                      style = {{fontSize : viewPort.zoom * 2, color : p.username === currentUser ? "crimson" : "slateblue"}}
                       />
                     </Marker>
 
@@ -147,7 +178,7 @@ function App() {
                 onClose = {() => setNewPlace(null)}
                 anchor = "left"
                 >
-                  <form onSubmit={handlePinSubmit()}>
+                  <form onSubmit={handlePinSubmit}>
                     <label>Title</label>
                     <input
                     placeholder="Enter Title"
@@ -182,7 +213,7 @@ function App() {
 
               <div className="footer_down">
                 {
-                  currentUser ? (<button className="button logout">Log Out</button>)
+                  currentUser ? (<button className="button logout" onClick={handleLogout}>Log Out</button>)
                   :
                   (
                     <div>
