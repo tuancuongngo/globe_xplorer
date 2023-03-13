@@ -212,6 +212,7 @@ function App() {
                   <form onSubmit={handlePinSubmit}>
                     <label>Title</label>
                     <input
+                    className="title-input"
                     placeholder="Enter Title"
                     onChange={(e) => setTitle(e.target.value)}
                     />
