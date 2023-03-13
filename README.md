@@ -27,7 +27,8 @@ To run the app locally, follow these steps:
 7. Install the client dependencies using `npm install`
 8. Run the client using `npm start`
 9. Open a web browser and go to http://localhost:3000 to view the app.
-Note: Before running the app, you need to set the appropriate environment variables in the .env file. Please reach out to me at ngoct@vt.edu to get access. Thank you
+
+Note: Before running the app, you need to set the appropriate environment variables in the .env file. Please reach out to me at ngoct@vt.edu to get access. Thank you.
 
 
 ### Contributing
