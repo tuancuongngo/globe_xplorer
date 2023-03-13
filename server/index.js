@@ -3,6 +3,7 @@ const app = express();
 app.use(express.json());
 
 require("dotenv").config();
+const path = require("path");
 
 // routes
 const pinRoute = require("./routes/pins");
